@@ -10,10 +10,11 @@ trait Template
     {
         try {
             $twig = Twig::create(DIR_VIEW);
-            $twig->getEnvironment()->addGlobal('EMPRESA', ' Atos Automação');
+            #Adicionamos uma varaivel de template Global acessivel de qualquer template
+            $twig->getEnvironment()->addGlobal('EMPRESA', 'BITLAB');
             return $twig;
         } catch (\Exception $e) {
-            throw new \Exception("Restrição" . $e->getMessage());
+            throw new \Exception("Restrição: " . $e->getMessage());
         }
     }
     public function setView($name)

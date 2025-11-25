@@ -1,29 +1,36 @@
 <?php
 
 namespace app\controller;
+
 use app\database\builder\InsertQuery;
 
-class Fornecedor extends Base
+class Empresa extends Base
 {
     public function lista($request, $response)
     {
-        $dadosTemplate = [
-            'titulo' => 'Cadastro de Fornecedor'
-        ];
-        return $this->getTwig()
-            ->render($response, $this->setView('listfornecedor'), $dadosTemplate)
-            ->withHeader('Content-type', 'text/html')
-            ->withStatus(200);
+        try {
+            $dadosTemplate = [
+                'titulo' => 'Página inicial'
+            ];
+            return $this->getTwig()
+                ->render($response, $this->setView('listempresa'), $dadosTemplate)
+                ->withHeader('Content-Type', 'text/html')
+                ->withStatus(200);
+        } catch (\Exception $e) {
+        }
     }
     public function cadastro($request, $response)
     {
-        $dadosTemplate = [
-            'titulo' => 'Cadastro de fornecedor'
-        ];
-        return $this->getTwig()
-            ->render($response, $this->setView('fornecedor'), $dadosTemplate)
-            ->withHeader('Content-Type', 'text/html')
-            ->withStatus(200);
+        try {
+            $dadosTemplate = [
+                'titulo' => 'Página inicial'
+            ];
+            return $this->getTwig()
+                ->render($response, $this->setView('empresa'), $dadosTemplate)
+                ->withHeader('Content-Type', 'text/html')
+                ->withStatus(200);
+        } catch (\Exception $e) {
+        }
     }
     public function insert($request, $response)
     {
@@ -40,7 +47,7 @@ class Fornecedor extends Base
                 'cpf_cnpj' => $cpf,
                 'rg_ie' => $rg
             ];
-            $IsSave = InsertQuery::table('fornecedor')->save($FieldsAndValues);
+            $IsSave = InsertQuery::table('empresa')->save($FieldsAndValues);
             if (!$IsSave) {
                 echo 'Erro ao salvar';
                 die;
