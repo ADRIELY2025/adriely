@@ -17,7 +17,7 @@ const tabela = new $('#tabela').DataTable({
         searchPlaceholder: 'Digite sua pesquisa...'
     },
     ajax: {
-        url: '/empresa/listempresa',
+        url: '/fornecedor/listfornecedor',
         type: 'POST'
     }
 });

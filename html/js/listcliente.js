@@ -1,17 +1,24 @@
-import { Requests } from "./Requests.js";
+//import { DataTables } from "./DataTables.js";
 
-const Salvar = document.getElementById('salvar');
-const Cep = document.getElementById('cep');
-
-Salvar.addEventListener('click', async () => {
-    const response = await Requests
-        .SetForm('cadastro-cliente')
-        .Post('/cliente/insert');
+const tabela = new $('#tabela').DataTable({
+    paging: true,
+    lengthChange: true,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    stateSave: true,
+    select: true,
+    processing: true,
+    serverSide: true,
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
+        searchPlaceholder: 'Digite sua pesquisa...'
+    },
+    ajax: {
+        url: '/cliente/listcliente',
+        type: 'POST'
+    }
 });
-
-Cep.addEventListener('blur', async () => {
-    const cep = Cep.value.replace('-', '');
-    const url = `https://viacep.com.br/ws/${cep}/json/`;
-    const response = await Requests.Get(url);
-    console.log(response);
-});
+//DataTables.SetId('tabela').Post('/user/listuser');

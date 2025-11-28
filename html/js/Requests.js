@@ -1,7 +1,5 @@
 class Requests {
-    static formData;
-    static option;
-    /* Recebe o código do formulário */
+    static form;
     static SetForm(id) {
         const form = document.getElementById(id);
         if (!form) {
