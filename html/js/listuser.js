@@ -1,4 +1,4 @@
-//import { DataTables } from "./DataTables.js";
+import { DataTables } from "./DataTables.js";
 
 const tabela = new $('#tabela').DataTable({
     paging: true,
@@ -21,4 +21,4 @@ const tabela = new $('#tabela').DataTable({
         type: 'POST'
     }
 });
-//DataTables.SetId('tabela').Post('/user/listuser');
+DataTables.SetId('tabela').Post('/user/listuser');

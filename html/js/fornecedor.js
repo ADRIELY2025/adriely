@@ -5,7 +5,7 @@ const Salvar = document.getElementById('insert');
 
 $('#cpf_cnpj').inputmask({ "mask": ["999.999.999-99", "99.999.999/9999-99"] });
 
-$('#celular').inputmask({ "mask": ["(69) 99999-9999"] });
+$('#celular').inputmask({ "mask": ["(99) 99999-9999"] });
 
 Salvar.addEventListener('click', async () => {
     Validate.SetForm('form').Validate();

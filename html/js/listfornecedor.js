@@ -1,4 +1,4 @@
-//import { DataTables } from "./DataTables.js";
+import { DataTables } from "./DataTables.js";
 
 const tabela = new $('#tabela').DataTable({
     paging: true,
@@ -21,4 +21,12 @@ const tabela = new $('#tabela').DataTable({
         type: 'POST'
     }
 });
-//DataTables.SetId('tabela').Post('/user/listuser');
+
+async function deletar(id) {
+
+    document.getElementById('id').value = id;
+    const response = await Requests.SetForm('form').Post('/fornecedor/delete');
+    console.log(response);
+}
+window.deletar = deletar;
+DataTables.SetId('tabela').Post('/fornecedor/listfornecedor');

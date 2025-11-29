@@ -98,8 +98,8 @@ class User extends Base
           2 => 'sobrenome',  
           3 => 'cpf',  
           4 => 'rg',  
-          5 => 'email',  
-          6 => 'email',  
+          5 => 'email',
+          6 => 'celular'    
         ];
         #Capturamos o nome do campo a ser odernado.
         $orderField = $fields[$order];
