@@ -31,10 +31,10 @@ class Empresa extends Base
     public function insert($request, $response)
     {
         try {
-             $nome = $_POST['nome_fantasia'];
-            $sobrenome = $_POST['sobrenome_razao'];
+            $nome = $_POST['nome'];
+            $sobrenome = $_POST['sobrenome'];
             $cpf = $_POST['cpf'];
-            $rg = $_POST['rg_ie'];
+            $rg = $_POST['rg'];
             
             
             $FieldsAndValues = [
