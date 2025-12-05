@@ -1,4 +1,4 @@
-import { DataTables } from "./DataTables.js";
+import { Requests } from "./Requests.js";
 
 const tabela = new $('#tabela').DataTable({
     paging: true,
@@ -28,4 +28,3 @@ async function deletar(id) {
     console.log(response);
 }
 window.deletar = deletar;
-DataTables.SetId('tabela').Post('/empresa/listempresa');

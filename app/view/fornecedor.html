@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 
 {% block main %}
-<div class="container my-5">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <form id="form" class="row g-3 needs-validation" novalidate>
@@ -36,15 +36,10 @@
           <div class="valid-feedback">Válido!</div>
           <div class="invalid-feedback">Por favor, preencha este campo.</div>
         </div>
-        <div class="col-12">
-          <form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="">
-  </div>
-          <button class="btn btn-primary" type="button" id="insert">Salvar</button>
-        </div>
 
+        <div class="col-12">
+          <button class="btn btn-primary" type="button" id="insert" onclick="insert">Salvar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -53,5 +48,5 @@
 
 {% block script %}
 {% include "script.html" %}
-<script defer type="module" src="/js/fornecedor.js"></script>
+<script defer type="module" src="/js/cliente.js"></script>
 {% endblock %}

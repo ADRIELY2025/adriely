@@ -29,7 +29,7 @@ class User extends Base
             ->withHeader('Content-Type', 'text/html')
             ->withStatus(200);
     }
-     public function insert($request, $response)
+    public function insert($request, $response)
     {
         try {
             $nome = $_POST['nome'];
@@ -39,16 +39,16 @@ class User extends Base
             $email = $_POST['email'];
             $celular = $_POST['celular'];
             $senha = $_POST['senha'];
-            
-            
+
+
             $FieldsAndValues = [
                 'nome' => $nome,
                 'sobrenome' => $sobrenome,
                 'cpf' => $cpf,
                 'rg' => $rg,
                 'email' => $email,
-                'celular' => $celular,
-                'senha' => $senha
+                'telefone' => $celular,
+                #'senha' => $senha
             ];
 
             $IsSave = InsertQuery::table('usuario')->save($FieldsAndValues);
@@ -81,45 +81,46 @@ class User extends Base
             die;
         }
     }
-    public function listuser($request, $response){
+    public function listuser($request, $response)
+    {
         #Captura todas a variaveis de forma mais segura VARIAVEIS POST.
         $form = $request->getParsedBody();
         #Qual a coluna da tabela deve ser ordenada.
-        $order = $form['order'][0]['column'];
+        $order = $form['order'][0]['column'] ?? 0;
         #Tipo de ordenação
-        $orderType = $form['order'][0]['dir'];
+        $orderType = $form['order'][0]['dir'] ?? 'asc';
         #Em qual registro se inicia o retorno dos registros, OFFSET
-        $start = $form['start'];
+        $start = $form['start'] ?? 0;
         #Limite de registro a serem retornados do banco de dados LIMIT
-        $length = $form['length'];
-        $fields= [
-          0 => 'id',  
-          1 => 'nome',  
-          2 => 'sobrenome',  
-          3 => 'cpf',  
-          4 => 'rg',  
-          5 => 'email',
-          6 => 'celular'    
+        $length = $form['length'] ?? 10;
+        $fields = [
+            0 => 'id',
+            1 => 'nome',
+            2 => 'sobrenome',
+            3 => 'cpf',
+            4 => 'rg',
+            5 => 'email',
+            6 => 'celular'
         ];
         #Capturamos o nome do campo a ser odernado.
         $orderField = $fields[$order];
         #O termo pesquisado
-        $term = $form ['search']['value'];
-        $query = SelectQuery::select('id,nome,sobrenome,cpf,rg,email,celular')->from('usuario');
+        $term = $form['search']['value'];
+        $query = SelectQuery::select()->from('usuario');
         if (!is_null($term) && ($term !== '')) {
             $query->where('nome', 'ilike', "%{$term}%", 'or')
-            ->where('sobrenome', 'ilike', "%{$term}%", 'or')
-            ->where('cpf', 'ilike', "%{$term}%", 'or')
-            ->where('rg', 'ilike', "%{$term}%", 'or')
-            ->where('email', 'ilike', "%{$term}%", 'or')
-            ->where('celular', 'ilike', "%{$term}%");
+                ->where('sobrenome', 'ilike', "%{$term}%", 'or')
+                ->where('cpf', 'ilike', "%{$term}%", 'or')
+                ->where('rg', 'ilike', "%{$term}%", 'or')
+                ->where('email', 'ilike', "%{$term}%", 'or')
+                ->where('celular', 'ilike', "%{$term}%");
         }
         $users = $query
-        ->order($orderField, $orderType)
-        ->limit($length, $start)
-        ->fetchAll();
+            ->order($orderField, $orderType)
+            ->limit($length, $start)
+            ->fetchAll();
         $userData = [];
-        foreach($users as $key => $value) {
+        foreach ($users as $key => $value) {
             $userData[$key] = [
                 $value['id'],
                 $value['nome'],

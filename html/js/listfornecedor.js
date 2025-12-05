@@ -1,5 +1,3 @@
-import { DataTables } from "./DataTables.js";
-
 const tabela = new $('#tabela').DataTable({
     paging: true,
     lengthChange: true,
@@ -14,19 +12,10 @@ const tabela = new $('#tabela').DataTable({
     serverSide: true,
     language: {
         url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
-        searchPlaceholder: 'Digite sua pesquisa...'
+        searchPlaceholder: 'Digite sua pesquisa...',
     },
     ajax: {
         url: '/fornecedor/listfornecedor',
         type: 'POST'
     }
 });
-
-async function deletar(id) {
-
-    document.getElementById('id').value = id;
-    const response = await Requests.SetForm('form').Post('/fornecedor/delete');
-    console.log(response);
-}
-window.deletar = deletar;
-DataTables.SetId('tabela').Post('/fornecedor/listfornecedor');

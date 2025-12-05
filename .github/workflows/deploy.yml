@@ -28,7 +28,7 @@ jobs:
           username: "root"
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /home/atosautomacao
+            cd /home/adriely
             dos2unix run.sh
             chmod +x run.sh
             sudo bash run.sh
