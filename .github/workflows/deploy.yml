@@ -19,7 +19,7 @@ jobs:
           username: "root"
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "."
-          target: "/home/atosautomacao"
+          target: "/home/adriely"
         
       - name: "Build da aplicação"
         uses: appleboy/ssh-action@v1
