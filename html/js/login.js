@@ -1,4 +1,4 @@
-import { Validate } from "./Validate.js";
+import { Validate } from "./validate.js";
 import { Requests } from "./Requests.js";
 
 const preCadastro = document.getElementById('preCadastro');
