@@ -32,4 +32,5 @@ jobs:
             dos2unix run.sh
             chmod +x run.sh
             sudo bash run.sh
-            chown -R www-data:www-data .
+            chown -R www-data:www-data . 
+            
