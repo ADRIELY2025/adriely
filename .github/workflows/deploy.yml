@@ -2,14 +2,13 @@ name: "Deploy para VPS"
 
 on:
   push:
-    branches: 
+    branches:
       - main
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: "Baixar o código" 
+      - name: "Baixar o código"
         uses: actions/checkout@v4
 
       - name: "Copiar arquivos para VPS"
@@ -20,7 +19,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "."
           target: "/home/adriely"
-        
+
       - name: "Build da aplicação"
         uses: appleboy/ssh-action@v1
         with:
@@ -29,7 +28,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /home/adriely
-            dos2unix run.sh
-            chmod +x run.sh
-            sudo bash run.sh
+            sudo dos2unix start.sh
+            chmod +x start.sh
+            sudo bash start.sh
             chown -R www-data:www-data .
