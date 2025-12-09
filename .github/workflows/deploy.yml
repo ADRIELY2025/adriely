@@ -18,7 +18,7 @@ jobs:
           username: "root"
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "."
-          target: "/home/adriely"
+          target: "/home/BitLab"
 
       - name: "Build da aplicação"
         uses: appleboy/ssh-action@v1
@@ -27,7 +27,7 @@ jobs:
           username: "root"
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /home/adriely
+            cd /home/BitLab
             sudo dos2unix run.sh
             chmod +x run.sh
             sudo bash run.sh
