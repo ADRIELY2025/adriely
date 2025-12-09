@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/adriely/
+cd /home/BitLab/
 
 rm -R vendor/
 rm -R composer.lock
@@ -12,9 +12,9 @@ composer install --no-interaction --prefer-dist --optimize-autoloader
 composer update --no-interaction
 composer dump-autoload -o
 
-PG_USER="adriely"
-PG_PASS="adriely"
-PG_DB="adriely"
+PG_USER="BitLab"
+PG_PASS="BitLab"
+PG_DB="BitLab"
 ############################################################
 # 1) Criar usuário se não existir
 ############################################################
