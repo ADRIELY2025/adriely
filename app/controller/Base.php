@@ -7,4 +7,4 @@ use app\trait\Template;
 abstract class Base
 {
     use Template;
-}
+} 
